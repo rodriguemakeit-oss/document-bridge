@@ -1,27 +1,25 @@
 # Document Bridge
 
-Migration de documents et métadonnées de SharePoint vers S3 et PostgreSQL.
+A reference workflow for transferring documents and associated metadata between collaboration storage, object storage, and a relational database.
 
-Version de portfolio maintenue sur [rodriguemakeit-oss](https://github.com/rodriguemakeit-oss).
+## What it demonstrates
 
-## Ce que le projet explore
+- Microsoft Graph authentication through environment-based secrets
+- Document and metadata extraction as separate steps
+- Object-storage paths that preserve source hierarchy
+- Relational metadata reconciliation
 
-Migration de documents et métadonnées de SharePoint vers S3 et PostgreSQL. L’accent est mis sur la séparation des composants, la configuration explicite et la réutilisation des traitements.
+## Repository map
 
-## Structure
+- `sharepoint_to_s3.py` — document transfer example
+- `sharepoint_metadata_to_s3.py` — metadata export example
+- `schema_db.sql` — relational schema
+- `test_connections.py` — connectivity checks
 
-`sharepoint_to_s3.py · sharepoint_metadata_to_s3.py · schema_db.sql`
+## Before running
 
-## Prise en main
+See [GUIDE.md](GUIDE.md) and configure your own tenant, storage, database, and access policies. The repository contains no document corpus or credentials; example hostnames and settings are placeholders.
 
-Copiez `.env.example` vers `.env`, renseignez vos accès puis lancez les scripts de migration.
+## Scope
 
-Les valeurs de déploiement sont des exemples. Les identifiants nuls et les domaines `example.invalid` doivent être remplacés dans votre propre environnement. Aucun déploiement cloud n’est lancé automatiquement.
-
-## État du projet
-
-Cette adaptation nécessite vos propres services et jeux de données. Les contrôles locaux sont décrits dans [VALIDATION.md](VALIDATION.md) ; ils ne constituent pas une validation des intégrations cloud.
-
-## Contributions et licences
-
-Les noms de packages, crédits d’auteurs et avis tiers conservés dans les sources s’appliquent à leurs composants respectifs. Aucune licence globale supplémentaire n’est attribuée à ce dépôt.
+This portfolio adaptation illustrates integration patterns. It is not a production migration tool: review permissions, retention, error handling, and destination controls for your use case. See [VALIDATION.md](VALIDATION.md).
